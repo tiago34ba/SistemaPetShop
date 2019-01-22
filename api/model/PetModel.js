@@ -1,4 +1,6 @@
 module.exports = function (){
-    this.getPet();
+    this.getPet= function(connetion, callbeack){
+        connection.query('select * from pet',callbeack);
     return this;
+}
 }

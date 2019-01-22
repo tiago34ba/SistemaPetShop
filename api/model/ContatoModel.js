@@ -1,4 +1,6 @@
 module.exports = function (){
-    this.getContato();
+    this.getContato= function (connetion, callbeack){
+        connection.query('select * from contato', callbeack);
     return this;
+}
 }

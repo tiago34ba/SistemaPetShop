@@ -1,4 +1,6 @@
 module.exports = function (){
-    this.getClinica();
+    this.getCliente = function(connetion, callbeack){
+        connection.query('select * from cliente',callbeack);
     return this;
+}
 }
