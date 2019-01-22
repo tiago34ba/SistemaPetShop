@@ -5,7 +5,7 @@ module.exports = function (app) {
 
         ClienteoModel.getNoticias(connection, function (error, result) {
             res.render("cliente/cliente", {cliente: result});
-            connection.query('select*from agendamento');
+            connection.query('select*from cliente');
         });
 
     });

@@ -1,11 +1,11 @@
 module.exports = function (app) {
     app.get('/contato', function (req, res) {
         var connection = app.config.dbconnection();
-        var ContatooModel = Api.Api.model.ContatooModel;
+        var ContatoModel = Api.Api.model.ContatoModel;
 
-        ContatooModel.getNoticias(connection, function (error, result) {
+        ContatoModel.getNoticias(connection, function (error, result) {
             res.render("contato/contato", {contato: result});
-            connection.query('select*from agendamento');
+            connection.query('select*from contato');
         });
 
     });
