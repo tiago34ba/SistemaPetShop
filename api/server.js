@@ -1,10 +1,22 @@
 var express = require('express');
-var app = express();
+var consign = require('consign');
+var bodyParser = require('body-parser');
+var expressValidator = require('express-validator');
 
 
-port = process.env.PORT || 3000;
-app.listen(port);
-app.get('/', function(req, res) { res.json({PetShop :  'Sistema de PetShop'});
- });
-console.log('Message RESTful API server started on: ' + port);
+var api = express();
 
+api.set('view engine', 'ejs');
+api.set('views', './app/AdminLTE-master');
+
+api.use(bodyParser.urlencoded({extended: true}));
+api.use(expressValidator());
+consign()
+        .then('api/controllers')
+        .include('api/routes')
+        .then('dao/config.js')
+        .then('api/models')
+
+        .into(api);
+
+module.exports = api;
